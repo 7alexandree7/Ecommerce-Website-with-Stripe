@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Carousel = ({ products }: Props) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   useEffect(() => {
     if (!products.length) return
@@ -21,8 +21,6 @@ const Carousel = ({ products }: Props) => {
 
     return () => clearInterval(interval)
   }, [products.length])
-
-  if (!products.length) return null
 
   const currentProduct = products[currentIndex]
   const price = currentProduct.default_price as Stripe.Price | null
