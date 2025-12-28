@@ -11,10 +11,11 @@ interface Props {
 const ProductId = async ({ params }: Props) => {
 
   const product = await stripe.products.retrieve(params.id, { expand: ['default_price'] })
+  const plainProduct = JSON.parse(JSON.stringify(product))
 
   return (
     <>
-      <ProductDetail product={product} />
+      <ProductDetail product={plainProduct} />
     </>
   )
 }
