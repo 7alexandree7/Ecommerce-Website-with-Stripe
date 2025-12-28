@@ -28,8 +28,8 @@ const ProductCard = ({ product }: Props) => {
                 )}
 
                 <CardHeader className="p-4">
-                    <CardTitle className="text-xl font-bold text-gray-800">
-                        {product.name}
+                    <CardTitle className="text-sm font-bold text-gray-800">
+                        {product.name.toUpperCase()}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="p-4 grow flex flex-col justify-between">
