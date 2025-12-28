@@ -5,6 +5,8 @@ const ProductsPage = async () => {
 
   const products = await stripe.products.list({
     expand: ["data.default_price"],
+    limit: 12
+    
   })
 
 
