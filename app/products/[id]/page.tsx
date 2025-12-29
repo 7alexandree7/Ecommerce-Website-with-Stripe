@@ -1,23 +1,16 @@
-import ProductDetail from '@/components/ProductDetail/ProductDetail'
-import { stripe } from '@/lib/stripe'
-import React from 'react'
+import  ProductDetail from "@/components/ProductDetail/ProductDetail";
+import { stripe } from "@/lib/stripe";
 
-interface Props {
-  params: {
-    id: string
-  }
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const product = await stripe.products.retrieve(id, {
+    expand: ["default_price"],
+  });
+
+  const plainProduct = JSON.parse(JSON.stringify(product));
+  return <ProductDetail product={plainProduct} />;
 }
-
-const ProductId = async ({ params }: Props) => {
-
-  const product = await stripe.products.retrieve(params.id, { expand: ['default_price'] })
-  const plainProduct = JSON.parse(JSON.stringify(product))
-
-  return (
-    <>
-      <ProductDetail product={plainProduct} />
-    </>
-  )
-}
-
-export default ProductId
