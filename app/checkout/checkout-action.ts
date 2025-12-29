@@ -20,8 +20,8 @@ export const checkoutAction = async (formData: FormData): Promise<void> => {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-        cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout`,
+        success_url: `$https://ecommerce-website-with-stripe-tau.vercel.app/success`,
+        cancel_url: `$https://ecommerce-website-with-stripe-tau.vercel.app/checkout`,
     });
 
     redirect(session.url!);
